@@ -1,4 +1,4 @@
-# loja_virtual
+# desapega_jipa
 
 A new Flutter application.
 
