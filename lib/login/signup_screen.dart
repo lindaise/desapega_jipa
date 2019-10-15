@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/models/user_model.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -14,7 +13,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
-  final _addressController = TextEditingController();
+  final _phoneController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -70,12 +69,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   SizedBox(height: 16.0,),
                   TextFormField(
-                    controller: _addressController,
+                    controller: _phoneController,
                     decoration: InputDecoration(
-                        hintText: "Endereço"
+                        hintText: "Telefone"
                     ),
                     validator: (text){
-                      if(text.isEmpty) return "Endereço inválido!";
+                      if(text.isEmpty || text.length < 9) return "Telefone inválido!";
                     },
                   ),
                   SizedBox(height: 16.0,),
@@ -95,10 +94,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           Map<String, dynamic> userData = {
                             "name": _nameController.text,
                             "email": _emailController.text,
-                            "address": _addressController.text
+                            "phone": _phoneController.text
                           };
 
-                          model.signUp(
+                          model.signUp( //-------------login automatico
                               userData: userData,
                               pass: _passController.text,
                               onSuccess: _onSuccess,

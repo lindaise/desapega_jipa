@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/models/user_model.dart';
-import 'package:loja_virtual/screens/login_screen.dart';
-import 'package:loja_virtual/tiles/drawer_tile.dart';
+import 'package:loja_virtual/login/login_screen.dart';
+
 import 'package:scoped_model/scoped_model.dart';
+
+import 'drawer_tile.dart';
 
 class CustomDrawer extends StatelessWidget {
 
@@ -18,7 +20,7 @@ class CustomDrawer extends StatelessWidget {
           gradient: LinearGradient(
               colors: [
                 Colors.teal,
-                Colors.white
+                Colors.grey[850]
               ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter
@@ -30,6 +32,7 @@ class CustomDrawer extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           _buildDrawerBack(),
+
           ListView(
             padding: EdgeInsets.only(left: 32.0, top: 16.0),
             children: <Widget>[
@@ -63,13 +66,15 @@ class CustomDrawer extends StatelessWidget {
                                     fontWeight: FontWeight.bold
                                 ),
                               ),
+                              SizedBox (height: 8.0,),
                               GestureDetector(
                                 child: Text(
                                   !model.isLoggedIn() ?
                                   "Entre ou Cadastre-se >"
                                   : "Sair",
                                   style: TextStyle(
-                                      color: Theme.of(context).primaryColor,
+                                      //color: Theme.of(context).primaryColor,
+                                      color: Colors.tealAccent,
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.bold
                                   ),
@@ -96,6 +101,7 @@ class CustomDrawer extends StatelessWidget {
               DrawerTile(Icons.list, "Categorias", pageController, 1),
               DrawerTile(Icons.location_on, "Locais de Descarte", pageController, 2),
               DrawerTile(Icons.playlist_add_check, "Meus Anúncios", pageController, 3),
+
             ],
           )
         ],

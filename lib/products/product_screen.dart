@@ -5,7 +5,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:loja_virtual/models/cart_model.dart';
 import 'package:loja_virtual/models/user_model.dart';
 import 'package:loja_virtual/screens/cart_screen.dart';
-import 'package:loja_virtual/screens/login_screen.dart';
+import 'package:loja_virtual/login/login_screen.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:url_launcher/url_launcher.dart';
 //import 'package:flutter_launch/flutter_launch.dart';
@@ -20,6 +20,8 @@ class ProductScreen extends StatefulWidget {
   _ProductScreenState createState() => _ProductScreenState(product);
 }
 
+
+
 class _ProductScreenState extends State<ProductScreen> {
 
   final ProductData product;
@@ -30,6 +32,8 @@ class _ProductScreenState extends State<ProductScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    //final _userData = UserData;
 
     final Color primaryColor = Theme.of(context).primaryColor;
 
@@ -159,8 +163,8 @@ class _ProductScreenState extends State<ProductScreen> {
                         );
                       }
                     } : null,
-                    child: Text(UserModel.of(context).isLoggedIn() ? "Adicionar ao Carrinho"
-                      : "Entre para Comprar",
+                    child: Text(UserModel.of(context).isLoggedIn() ? "Adicionar Anúncio"
+                      : "Entre para Criar o Anúncio",
                       style: TextStyle(fontSize: 18.0),
                     ),
                     color: primaryColor,
@@ -206,6 +210,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   //whatsAppOpen();
                   var whatsappUrl ="whatsapp://send?phone=+5569992211563&text="
                       "Olá,%20meu%20amigo!%20Vi%20seu%20anúncio%20no%20DesapegaJipa";
+
                   await canLaunch(whatsappUrl)?
                   launch(whatsappUrl):print("Não há WhatsApp instalado");
 
@@ -214,7 +219,5 @@ class _ProductScreenState extends State<ProductScreen> {
           ],
         );
   }
-  /*void whatsAppOpen() async {
-    await FlutterLaunch.launchWathsApp(phone: "5569992211563", message: "Hello");
-  }*/
+
 }
