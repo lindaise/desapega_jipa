@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/models/user_model.dart';
+import 'package:loja_virtual/login/user_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -36,6 +36,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: ListView(
                 padding: EdgeInsets.all(16.0),
                 children: <Widget>[
+                  SizedBox(
+                    width: 150,
+                    height: 150,
+                    child: Image.asset("images/resetar_senha.png"),
+                  ),
                   TextFormField(
                     controller: _nameController,
                     decoration: InputDecoration(

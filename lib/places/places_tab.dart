@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/tiles/place_tile.dart';
+import 'package:loja_virtual/places/place_tile.dart';
 
 class PlacesTab extends StatelessWidget {
   @override

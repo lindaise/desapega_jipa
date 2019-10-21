@@ -3,11 +3,13 @@ import 'package:loja_virtual/datas/cart_product.dart';
 import 'package:loja_virtual/datas/product_data.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:loja_virtual/models/cart_model.dart';
-import 'package:loja_virtual/models/user_model.dart';
+import 'package:loja_virtual/login/user_model.dart';
 import 'package:loja_virtual/screens/cart_screen.dart';
 import 'package:loja_virtual/login/login_screen.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:scoped_model/scoped_model.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 //import 'package:flutter_launch/flutter_launch.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -27,6 +29,7 @@ class _ProductScreenState extends State<ProductScreen> {
   final ProductData product;
 
   String it_works;
+  String phone;
 
   _ProductScreenState(this.product);
 
@@ -79,50 +82,9 @@ class _ProductScreenState extends State<ProductScreen> {
                   ),
                 ),
                 SizedBox(height: 16.0,),
-                Text(
-                  "Tamanho",
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w500
-                  ),
-                ),
-                SizedBox(
-                  height: 34.0,
-                  child: GridView(
-                      padding: EdgeInsets.symmetric(vertical: 4.0),
-                      scrollDirection: Axis.horizontal,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 1,
-                          mainAxisSpacing: 8.0,
-                          childAspectRatio: 0.5
-                      ),
-                    children: product.it_works.map(
-                      (s){
-                        return GestureDetector(
-                          onTap: (){
-                            setState(() {
-                              it_works = s;
-                            });
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                              border: Border.all(
-                                color: s == it_works ? primaryColor : Colors.grey[500],
-                                width: 3.0
-                              )
-                            ),
-                            width: 50.0,
-                            alignment: Alignment.center,
-                            child: Text(s),
-                          ),
-                        );
-                      }
-                    ).toList(),
-                  ),
-                ),
 
-                SizedBox(height: 16.0,),
+
+
                 Text(
                   "Descrição",
                   style: TextStyle(
@@ -137,7 +99,51 @@ class _ProductScreenState extends State<ProductScreen> {
                   ),
                 ),
                 SizedBox(height: 16.0,),
+
+                Text(
+                  "Estado do Produto",
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w500
+                  ),
+                ),
                 SizedBox(
+                  height: 34.0,
+                  child: GridView(
+                    padding: EdgeInsets.symmetric(vertical: 4.0),
+                    scrollDirection: Axis.horizontal,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 1,
+                        mainAxisSpacing: 8.0,
+                        childAspectRatio: 0.2
+                    ),
+                    children: product.it_works.map(
+                            (s){
+                          return GestureDetector(
+                            onTap: (){
+                              setState(() {
+                                it_works = s;
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                                  border: Border.all(
+                                      color: s == it_works ? primaryColor : Colors.grey[500],
+                                      width: 3.0
+                                  )
+                              ),
+                              width: 50.0,
+                              alignment: Alignment.center,
+                              child: Text(s),
+                            ),
+                          );
+                        }
+                    ).toList(),
+                  ),
+                ),
+                SizedBox(height: 16.0,),
+                /*SizedBox( // ---------------- botao adicionar
                   height: 44.0,
                   child: RaisedButton(
                     onPressed: it_works != null ?
@@ -170,7 +176,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     color: primaryColor,
                     textColor: Colors.white,
                   ),
-                ),
+                ),*/
 
               ],
             ),
@@ -182,7 +188,8 @@ class _ProductScreenState extends State<ProductScreen> {
   }
 
   Widget _buildFloating(){
-
+    //child: ScopedModelDescendant<UserModel>(
+        //builder: (context, child, model){
         return SpeedDial(
           child: Icon(Icons.touch_app),
           backgroundColor: Colors.teal,
@@ -197,7 +204,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 onTap: (){
                   //_ordersBloc.setOrderCriteria(SortCriteria.READY_LAST);
                   //launch("tel:${ads[index].phone}");
-                  launch("tel:99999999");
+                  launch("tel:${UserModel.of(context).userData["phone"]}");
                 }
             ),
             SpeedDialChild(
@@ -208,8 +215,8 @@ class _ProductScreenState extends State<ProductScreen> {
                 onTap: () async {
                  // _ordersBloc.setOrderCriteria(SortCriteria.READY_FIRST);
                   //whatsAppOpen();
-                  var whatsappUrl ="whatsapp://send?phone=+5569992211563&text="
-                      "Olá,%20meu%20amigo!%20Vi%20seu%20anúncio%20no%20DesapegaJipa";
+                  var whatsappUrl ="whatsapp://send?phone=+${UserModel.of(context).userData["phone"]}&text="
+                      "Olá,%20meu%20amigo!%20Vi%20seu%20anúncio:%20${product.title}%20no%20DesapegaJipa";
 
                   await canLaunch(whatsappUrl)?
                   launch(whatsappUrl):print("Não há WhatsApp instalado");
@@ -218,6 +225,8 @@ class _ProductScreenState extends State<ProductScreen> {
             )
           ],
         );
+       // },
+    //);
   }
 
 }

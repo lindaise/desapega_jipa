@@ -1,10 +1,10 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:flutter/material.dart';
-
+// um model é um objeto que vai guardar todos os estodos do login do app
+// ele irá armazenar o usuario atual, bem como modificar o usuario atual
 class UserModel extends Model {
 
   FirebaseAuth _auth = FirebaseAuth.instance;

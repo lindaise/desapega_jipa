@@ -16,10 +16,12 @@ class PlaceTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           SizedBox(
-            height: 100.0,
+            height: 150.0,
+
             child: Image.network(
               snapshot.data["image"],
               fit: BoxFit.cover,
+
             ),
           ),
           Container(
@@ -55,8 +57,9 @@ class PlaceTile extends StatelessWidget {
                 },
               ),
               FlatButton(
+
                 child: Text("Ligar"),
-                textColor: Colors.blue,
+                textColor: Colors.teal,
                 padding: EdgeInsets.zero,
                 onPressed: (){
                   launch("tel:${snapshot.data["phone"]}");

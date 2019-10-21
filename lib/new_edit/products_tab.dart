@@ -19,7 +19,7 @@ class _ProductsTabState extends State<ProductsTab> with AutomaticKeepAliveClient
 
     return Scaffold(
       appBar: AppBar(
-          title: Text("Novo Produto"),
+          title: Text("Anunciar Produto"),
           backgroundColor: Colors.teal,
           centerTitle: true,
           actions: <Widget>[],

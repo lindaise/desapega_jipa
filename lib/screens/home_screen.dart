@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:loja_virtual/products/product_screen.dart';
 import 'package:loja_virtual/tabs/home_tab.dart';
 import 'package:loja_virtual/tabs/orders_tab.dart';
-import 'package:loja_virtual/tabs/places_tab.dart';
+import 'package:loja_virtual/places/places_tab.dart';
 import 'package:loja_virtual/tabs/view_products_tab.dart';
 import 'package:loja_virtual/new_edit/new_product_button.dart';
 import 'package:loja_virtual/drawer/custom_drawer.dart';

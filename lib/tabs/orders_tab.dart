@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:loja_virtual/models/user_model.dart';
+import 'package:loja_virtual/login/user_model.dart';
 import 'package:loja_virtual/login/login_screen.dart';
 import 'package:loja_virtual/tiles/order_tile.dart';
 
