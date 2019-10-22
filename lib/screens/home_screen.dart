@@ -33,20 +33,21 @@ class HomeScreen extends StatelessWidget {
           body: ProductsTab(),
           floatingActionButton: NewProductButton(),
         ),
-        Scaffold(
-          appBar: AppBar(
-            title: Text("Locais de Descarte"),
-            centerTitle: true,
-          ),
-          body: PlacesTab(),
-          drawer: CustomDrawer(_pageController),
-        ),
+
         Scaffold(
           appBar: AppBar(
             title: Text("Meus Anúncios"),
             centerTitle: true,
           ),
           body: OrdersTab(),
+          drawer: CustomDrawer(_pageController),
+        ),
+        Scaffold(
+          appBar: AppBar(
+            title: Text("Locais de Descarte"),
+            centerTitle: true,
+          ),
+          body: PlacesTab(),
           drawer: CustomDrawer(_pageController),
         )
       ],

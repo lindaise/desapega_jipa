@@ -38,7 +38,7 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
     }
 
     final _fieldStyle = TextStyle(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 16
     );
 

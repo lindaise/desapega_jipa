@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //WidgetsFlutterBinding.ensureInitialized();// ---- isso?
     return ScopedModel<UserModel>(
       model: UserModel(),
       child: ScopedModelDescendant<UserModel>(
